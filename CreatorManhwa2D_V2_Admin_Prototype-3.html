@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CreatorManhwa2D V2</title>
+<style>
+:root{--bg:#08060d;--panel:#12101a;--panel2:#181521;--text:#f7f3fc;--muted:#aaa1b5;--line:#292330;--p:#9d5cff;--p2:#6b32c7;--g:#48d486;--r:#ff6077;--y:#f0c75e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -15%,#32165c 0,#08060d 42%);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:1120px;margin:auto;padding:20px}.nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0 24px}.logo{font-weight:950;letter-spacing:.5px}.logo i{font-style:normal;color:var(--p)}.nav a{color:var(--muted);margin-left:18px;text-decoration:none;font-size:14px}.hero{text-align:center;padding:45px 0}.ey{color:#cba9ff;font-weight:800;letter-spacing:2px;font-size:12px}.hero h1{font-size:clamp(42px,8vw,76px);line-height:1;margin:12px 0}.hero p{color:var(--muted);max-width:620px;margin:auto;line-height:1.6}.search{display:flex;max-width:680px;margin:28px auto 0;background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:6px}.search input{flex:1;background:transparent;border:0;outline:0;color:#fff;padding:13px}.btn{background:linear-gradient(135deg,var(--p),var(--p2));color:white;border:0;border-radius:10px;padding:11px 17px;font-weight:800}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat,.card,.modalbox{background:linear-gradient(180deg,#17131f,#100e16);border:1px solid var(--line);border-radius:17px}.stat{text-align:center;padding:18px}.stat b{font-size:25px;display:block}.muted{color:var(--muted)}section{margin:38px 0}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{padding:18px}.avatar{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#bd8bff,#4e1b91);font-weight:900;font-size:21px;margin-bottom:13px;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.card h3{margin:0 0 3px}.usn{color:#c0add6}.badge{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:5px 9px;border-radius:99px;background:#48d48615;color:#72e59f;font-size:12px;font-weight:800}.dot{width:7px;height:7px;background:var(--g);border-radius:50%}.role{font-size:12px;color:var(--muted);margin-top:10px}.verify{padding:24px;border-radius:20px;background:linear-gradient(135deg,#1c1428,#100d16);border:1px solid #3b2a50}.verifyrow{display:flex;gap:8px;margin-top:15px}.verifyrow input,.field input,.field select{background:#0b0910;border:1px solid var(--line);color:#fff;border-radius:10px;padding:12px;width:100%;outline:0}.result{margin-top:14px}.admin{display:none}.admin.show{display:block}.login{max-width:430px;margin:50px auto}.field{margin:12px 0}.field label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}.actions{display:flex;gap:8px;flex-wrap:wrap}.danger{background:#35121b;color:#ff8a9b;border:1px solid #5d202d;border-radius:10px;padding:9px 12px}.secondary{background:#211a2b;color:#d9c9e9;border:1px solid #382d46;border-radius:10px;padding:9px 12px}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px;border-bottom:1px solid var(--line)}.table th{color:var(--muted);font-size:12px}.overlay{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:20px}.overlay.show{display:flex}.modalbox{width:min(520px,100%);padding:24px}.close{float:right;background:none;border:0;color:var(--muted);font-size:22px}footer{border-top:1px solid var(--line);margin-top:60px;padding:25px 0;color:var(--muted);font-size:12px}@media(max-width:650px){.grid3{grid-template-columns:1fr}.verifyrow{display:block}.verifyrow>*{margin-top:8px}.nav a{margin-left:8px}.table{font-size:12px}.hero{padding:30px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="nav"><div class="logo">CREATOR<i>MANHWA</i>2D</div><div><a href="#members">Members</a><a href="#verify">Verify</a><a href="#admin">Admin</a></div></nav>
+
+<div id="public">
+<section class="hero"><div class="ey">OFFICIAL 2D FAMILY MEMBER DIRECTORY</div><h1>𝟮𝗗统 𝐅𝐀𝐌𝐈𝐋𝐘</h1><p>Direktori resmi creator dan member komunitas 2D FAMILY. Cari akun, lihat profil, dan verifikasi status keanggotaan.</p>
+<div class="search"><input id="search" placeholder="Cari nama, username, atau Member ID..." oninput="renderMembers()"><button class="btn" onclick="document.getElementById('members').scrollIntoView({behavior:'smooth'})">Search</button></div></section>
+
+<div class="grid3"><div class="stat"><b id="count">76</b><span class="muted">Active Members</span></div><div class="stat"><b>5</b><span class="muted">Leadership Team</span></div><div class="stat"><b>2D</b><span class="muted">Community</span></div></div>
+
+<section id="members"><div class="head"><div><h2>Member Directory</h2><div class="muted">Member aktif 2D FAMILY</div></div></div><div class="cards" id="cards"></div></section>
+
+<section id="verify"><div class="verify"><h2 style="margin:0">Verify a Member</h2><div class="muted">Masukkan Member ID untuk memeriksa status.</div><div class="verifyrow"><input id="verifyId" placeholder="2D-0001"><button class="btn" onclick="verify()">Verify</button></div><div class="result" id="result"></div></div></section>
+</div>
+
+<section class="admin" id="admin"><div class="head"><div><h2>Admin Dashboard</h2><div class="muted">Kelola member 2D FAMILY</div></div><div class="actions"><button class="secondary" onclick="logout()">Logout</button><button class="btn" onclick="openModal()">+ Add Member</button></div></div>
+<div class="grid3"><div class="stat"><b id="aCount">0</b><span class="muted">Active</span></div><div class="stat"><b id="lCount">0</b><span class="muted">Left</span></div><div class="stat"><b id="bCount">0</b><span class="muted">Banned</span></div></div>
+<div class="card" style="margin-top:15px;overflow:auto"><table class="table"><thead><tr><th>Member</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminRows"></tbody></table></div></section>
+
+<section class="login" id="login"><div class="card"><h2>Admin Login</h2><p class="muted">Prototype lokal. Untuk versi online, login akan diganti dengan authentication sungguhan.</p><div class="field"><label>Username</label><input id="loginUser" value="admin"></div><div class="field"><label>Password</label><input id="loginPass" type="password" placeholder="demo"></div><button class="btn" style="width:100%" onclick="login()">Login</button><div id="loginMsg" class="muted" style="margin-top:10px"></div></div></section>
+
+<footer>© 2026 CreatorManhwa2D · 2D FAMILY · Prototype V2</footer>
+</div>
+
+<div class="overlay" id="modal"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><h2 id="modalTitle">Add Member</h2>
+<div class="field"><label>Member ID</label><input id="fId" placeholder="2D-0007"></div>
+<div class="field"><label>Nama</label><input id="fName"></div>
+<div class="field"><label>Username TikTok</label><input id="fUser" placeholder="@username"></div>
+<div class="field"><label>TikTok URL</label><input id="fUrl" placeholder="https://www.tiktok.com/@username"></div>
+<div class="field"><label>Role</label><select id="fRole"><option>Member</option><option>Moderator</option><option>Admin</option><option>Founder</option><option>Leader</option></select></div>
+<div class="field"><label>Status</label><select id="fStatus"><option>Active</option><option>Left</option><option>Suspended</option><option>Banned</option></select></div>
+<div class="actions"><button class="btn" onclick="saveMember()">Save</button><button class="secondary" onclick="closeModal()">Cancel</button></div></div></div>
+
+<script>
+let members=[
+{id:"2D-0001",name:"Adsa",user:"@adsamanhwa",url:"#",role:"Leader • Founder",status:"Active"},
+{id:"2D-0002",name:"Adinda",user:"@adinda",url:"#",role:"Admin",status:"Active"},
+{id:"2D-0003",name:"Anang",user:"@anang",url:"#",role:"Admin",status:"Active"},
+{id:"2D-0004",name:"Ica",user:"@ica",url:"#",role:"Admin",status:"Active"},
+{id:"2D-0005",name:"Kia",user:"@kia",url:"#",role:"Admin",status:"Active"},
+{id:"2D-0006",name:"Sample Member",user:"@member2d",url:"#",role:"Member",status:"Active"}
+];
+let editing=null;
+function renderMembers(){
+ const q=(document.getElementById("search")?.value||"").toLowerCase();
+ const active=members.filter(m=>m.status==="Active");
+ document.getElementById("count").textContent=76; // will become DB count online
+ document.getElementById("cards").innerHTML=active.filter(m=>(m.name+" "+m.user+" "+m.id).toLowerCase().includes(q)).map(m=>`<div class="card"><div class="avatar">${m.name[0]}</div><h3>${m.name}</h3><div class="usn">${m.user}</div><div class="badge"><span class="dot"></span> Active Member</div><div class="role">${m.role} · ${m.id}</div><div class="actions" style="margin-top:13px"><button class="secondary" onclick="profile('${m.id}')">View Profile</button></div></div>`).join("")||'<p class="muted">Member tidak ditemukan.</p>';
+}
+function profile(id){const m=members.find(x=>x.id===id); alert(`${m.name}\\n${m.user}\\n${m.role}\\n${m.status}\\nMember ID: ${m.id}`)}
+function verify(){const id=document.getElementById("verifyId").value.trim().toUpperCase();const m=members.find(x=>x.id===id);document.getElementById("result").innerHTML=m&&m.status==="Active"?`🟢 <b>${m.user}</b> adalah <b>ACTIVE MEMBER</b> 2D FAMILY.`:`🔴 Member ID tidak ditemukan atau tidak aktif.`}
+function login(){if(document.getElementById("loginUser").value==="admin"&&document.getElementById("loginPass").value==="demo"){document.getElementById("login").style.display="none";document.getElementById("public").style.display="none";document.getElementById("admin").classList.add("show");location.hash="admin";renderAdmin()}else document.getElementById("loginMsg").textContent="Demo login: admin / demo"}
+function logout(){document.getElementById("admin").classList.remove("show");document.getElementById("login").style.display="block";document.getElementById("public").style.display="block";location.hash=""}
+function renderAdmin(){const active=members.filter(m=>m.status==="Active").length;document.getElementById("aCount").textContent=active;document.getElementById("lCount").textContent=members.filter(m=>m.status==="Left").length;document.getElementById("bCount").textContent=members.filter(m=>m.status==="Banned").length;document.getElementById("adminRows").innerHTML=members.map(m=>`<tr><td><b>${m.name}</b><br><span class="muted">${m.user} · ${m.id}</span></td><td>${m.role}</td><td>${m.status}</td><td><div class="actions"><button class="secondary" onclick="editMember('${m.id}')">Edit</button><button class="danger" onclick="removeMember('${m.id}')">Set Left</button></div></td></tr>`).join("")}
+function openModal(m=null){editing=m?.id||null;document.getElementById("modalTitle").textContent=editing?"Edit Member":"Add Member";document.getElementById("fId").value=m?.id||"";document.getElementById("fName").value=m?.name||"";document.getElementById("fUser").value=m?.user||"";document.getElementById("fUrl").value=m?.url||"";document.getElementById("fRole").value=(m?.role||"Member").replace(" • Founder","");document.getElementById("fStatus").value=m?.status||"Active";document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+function saveMember(){const data={id:document.getElementById("fId").value.trim().toUpperCase(),name:document.getElementById("fName").value.trim(),user:document.getElementById("fUser").value.trim(),url:document.getElementById("fUrl").value.trim(),role:document.getElementById("fRole").value,status:document.getElementById("fStatus").value};if(!data.id||!data.name||!data.user)return;if(editing){const i=members.findIndex(x=>x.id===editing);members[i]=data}else members.push(data);closeModal();renderAdmin();renderMembers()}
+function editMember(id){openModal(members.find(x=>x.id===id))}
+function removeMember(id){const m=members.find(x=>x.id===id);if(m){m.status="Left";renderAdmin();renderMembers()}}
+renderMembers();
+</script>
+</body>
+</html>
